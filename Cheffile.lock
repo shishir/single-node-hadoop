@@ -1,0 +1,15 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    chef_handler (1.1.4)
+    hadoop (0.8.0)
+      java (>= 0)
+    java (1.11.4)
+      windows (>= 0.0.0)
+    windows (1.9.0)
+      chef_handler (>= 0.0.0)
+
+DEPENDENCIES
+  hadoop (>= 0)
+  java (>= 0)
+
