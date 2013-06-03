@@ -4,8 +4,7 @@
 Vagrant::Config.run do |config|
 
   config.vm.box = "precise64"
-  config.vm.forward_port 50070, 50030, 50060
-  config.vm.provision :chef_solo do |chef|
+   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
     chef.add_recipe 'java'
     chef.add_recipe 'hadoop'
