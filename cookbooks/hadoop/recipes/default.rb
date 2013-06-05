@@ -1,4 +1,4 @@
-remote_file "#{node.hadoop.download_dir}/hadoop-1.2.0.tar.gz" do
+remote_file "#{node.hadoop.download_dir}/hadoop-#{node.hadoop.version}.tar.gz" do
   source node.hadoop.mirror_url
   action :create_if_missing
 end
@@ -29,7 +29,7 @@ execute "allow ssh access for local machine" do
 end
 
 execute "unpack hadoop" do
-  command "tar  -C #{node.hadoop.user_home} -xf #{node.hadoop.download_dir}/hadoop-1.2.0.tar.gz"
+  command "tar  -C #{node.hadoop.user_home} -xf #{node.hadoop.download_dir}/hadoop-#{node.hadoop.version}.tar.gz"
   not_if {::File.exists?("#{node.hadoop.download_dir}/hadoop-1.2.0")}
 end
 
@@ -38,7 +38,7 @@ execute "transfer ownership to hduser" do
 end
 
 execute "append java home to hadoop setenv.sh" do
-  command %Q{echo "export JAVA_HOME=$JAVA_HOME" >> "#{node.hadoop.user_home}/hadoop-1.2.0/conf/hadoop-env.sh"}
+  command %Q{echo "export JAVA_HOME=$JAVA_HOME" >> "#{node.hadoop.user_home}/hadoop-#{node.hadoop.version}/conf/hadoop-env.sh"}
   user node.hadoop.user
 end
 
@@ -49,14 +49,14 @@ execute "create directory through execute, coz chef is stupid with permission on
   not_if {::File.exists?("#{node.hadoop.data_dir}")}
 end
 
-template "#{node.hadoop.user_home}/hadoop-1.2.0/conf/core-site.xml" do
+template "#{node.hadoop.user_home}/hadoop-#{node.hadoop.version}/conf/core-site.xml" do
   owner node.hadoop.user
   group node.hadoop.user_group_name
   mode 0664
   variables :data_dir => node.hadoop.data_dir
 end
 
-template "#{node.hadoop.user_home}/hadoop-1.2.0/conf/mapred-site.xml" do
+template "#{node.hadoop.user_home}/hadoop-#{node.hadoop.version}/conf/mapred-site.xml" do
   owner node.hadoop.user
   group node.hadoop.user_group_name
   mode 0664
