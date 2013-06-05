@@ -1,1 +1,1 @@
-Installs the git software.
+Single node hadoop setup

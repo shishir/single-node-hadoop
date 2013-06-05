@@ -14,7 +14,7 @@ user node.hadoop.user do
   action :create
 end
 
-execute "Create Ssh key for #{node.hadoop.user}" do
+execute "create Ssh key for #{node.hadoop.user}" do
   command "mkdir #{node.hadoop.user_home}/.ssh && ssh-keygen -f #{node.hadoop.user_home}/.ssh/id_rsa -P ''"
   cwd node.hadoop.user_home
   user node.hadoop.user
