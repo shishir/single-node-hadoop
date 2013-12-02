@@ -8,7 +8,7 @@ This setup is tested on ubuntu(precise64) box.
 ## Setup
   
 ### Download the vagrant box file.
-  $ wget https://s3-us-west-2.amazonaws.com/squishy.vagrant-boxes/precise64_squishy_2013-02-09.box
+  $ wget http://files.vagrantup.com/precise64.box
 
 ### Add box to vagrant. 
  
