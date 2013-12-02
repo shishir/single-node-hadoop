@@ -3,6 +3,7 @@
 
 Vagrant::Config.run do |config|
   config.vm.box = "precise64"
+  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
   config.vm.forward_port 50030, 51130
   config.vm.provision :shell, :inline => "sudo apt-get update"
   config.vm.provision :chef_solo do |chef|
