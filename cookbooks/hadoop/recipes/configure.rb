@@ -23,7 +23,7 @@ template "#{node.hadoop.user_home}/hadoop-#{node.hadoop.version}/conf/mapred-sit
   mode 0664
 end
 
-template "#{node.hadoop.user_home}/hadoop-1.2.0/conf/hdfs-site.xml" do
+template "#{node.hadoop.user_home}/hadoop-#{node.hadoop.version}/conf/hdfs-site.xml" do
   owner node.hadoop.user
   group node.hadoop.user_group_name
   mode 0664
